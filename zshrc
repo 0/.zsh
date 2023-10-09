@@ -176,3 +176,20 @@ alias jobcountall='squeue --noheader -o "%t" | sort | uniq -c'
 if [[ -f ~/.zshrc.local ]]; then
 	source ~/.zshrc.local
 fi
+
+: ${ZSH="${HOME}/.zsh"}
+
+
+## Plugins
+
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+ZSH_HIGHLIGHT_MAXLENGTH=512
+
+# Must be last.
+source "${ZSH}/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+# Must be laster.
+source "${ZSH}/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh"
+
+[[ -n "$terminfo[kcuu1]" ]] && bindkey "$terminfo[kcuu1]" history-substring-search-up    # Up
+[[ -n "$terminfo[kcud1]" ]] && bindkey "$terminfo[kcud1]" history-substring-search-down  # Down
